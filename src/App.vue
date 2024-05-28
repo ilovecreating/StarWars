@@ -20,12 +20,9 @@ window.addEventListener('hashchange', () => {
   currentPath.value = window.location.hash;
 });
 
-const currentView = <T>(routes: T) =>
-  computed(() => {
-    return (routes[currentPath.value.slice(1) as keyof T] || NotFound) as
-      | typeof Home
-      | typeof Diagrama;
-  });
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || '/'] || NotFound;
+});
 </script>
 
 <template>
