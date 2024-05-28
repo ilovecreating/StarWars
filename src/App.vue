@@ -4,8 +4,12 @@ import { ref, computed } from 'vue';
 import NotFound from './pages/NotFound.vue';
 import Home from './pages/Home.vue';
 import Diagrama from './pages/Diagrama.vue';
+interface routesT {
+  '/': string;
+  '/about': string;
+}
 
-const routes = {
+const routes = <routesT>{
   '/': Home,
   '/about': Diagrama,
 };
@@ -16,7 +20,7 @@ window.addEventListener('hashchange', () => {
   currentPath.value = window.location.hash;
 });
 
-const currentView = computed(() => {
+const currentView = computed((): string => {
   return routes[currentPath.value.slice(1) || '/'] || NotFound;
 });
 </script>
