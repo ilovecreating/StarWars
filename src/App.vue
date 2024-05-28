@@ -5,8 +5,8 @@ import NotFound from './pages/NotFound.vue';
 import Home from './pages/Home.vue';
 import Diagrama from './pages/Diagrama.vue';
 interface routesT {
-  '/': string;
-  '/about': string;
+  '/': typeof Home;
+  '/about': typeof Diagrama;
 }
 
 const routes = <routesT>{
@@ -14,15 +14,18 @@ const routes = <routesT>{
   '/about': Diagrama,
 };
 
-const currentPath = ref(window.location.hash);
+const currentPath = ref<string>(window.location.hash);
 
 window.addEventListener('hashchange', () => {
   currentPath.value = window.location.hash;
 });
 
-const currentView = computed((): string => {
-  return routes[currentPath.value.slice(1) || '/'] || NotFound;
-});
+const currentView = <T>(routes: T) =>
+  computed(() => {
+    return (routes[currentPath.value.slice(1) as keyof T] || NotFound) as
+      | typeof Home
+      | typeof Diagrama;
+  });
 </script>
 
 <template>
