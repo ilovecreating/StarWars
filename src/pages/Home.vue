@@ -1,7 +1,7 @@
 <script setup>
-import HelloWorld from '/src/components/HelloWorld.vue';
+import Shop from '/src/components/Shop.vue';
 </script>
 
-<template><HelloWorld msg="Vite + Vue" /></template>
+<template><Shop msg="Vite + Vue" /></template>
 
 <style scoped></style>

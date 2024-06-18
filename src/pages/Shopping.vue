@@ -1,9 +1,9 @@
 <script setup>
-import Graph from '../components/Graph.vue';
+import Product from '../components/Product.vue';
 </script>
 
 <template>
-  <Graph />
+  <Product />
 </template>
 
 <style scoped></style>

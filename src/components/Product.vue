@@ -6,16 +6,6 @@
           <div class="label">{{ item.name }}</div>
         </div>
       </div>
-      <div class="bar-row">
-        <div class="bar-elem" v-for="item in info" :key="item.height">
-          <div class="bar" :style="{ height: item.height + 'px' }">{{}}</div>
-        </div>
-        <div class="bar-row-number">
-          <div class="bar-foo" v-for="item in info" :key="item.height">
-            <div>{{ item.height }}</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>

@@ -1,34 +1,9 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue';
-
-import NotFound from './pages/NotFound.vue';
-import Home from './pages/Home.vue';
-import Diagrama from './pages/Diagrama.vue';
-interface routesT {
-  '/': typeof Home;
-  '/about': typeof Diagrama;
-}
-
-const routes = <routesT>{
-  '/': Home,
-  '/about': Diagrama,
-};
-
-const currentPath = ref<string>(window.location.hash);
-
-window.addEventListener('hashchange', () => {
-  currentPath.value = window.location.hash;
-});
-
-const currentView = computed(() => {
-  return routes[currentPath.value.slice(1) || '/'] || NotFound;
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <a href="#/">Home</a> | <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
-  <component :is="currentView" />
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <style scoped>
